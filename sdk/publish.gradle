@@ -2,11 +2,11 @@ apply plugin: 'maven-publish'
 
 ext {
     mGroupId = "com.ozanlimited"
-    mArtifactId = "cropper"
+    mArtifactId = "hcaptcha"
     mVersionCode = 1
     mVersionName = "1.0.0"
 
-    mLibraryName = "Cropper"
+    mLibraryName = "Hcaptcha"
     mLibraryDescription = ""
 }
 
