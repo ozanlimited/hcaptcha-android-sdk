@@ -8,7 +8,10 @@ plugins {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
+
+apply {
+  from("publish.gradle")
+}
 
 android {
     compileSdkVersion 33
@@ -54,13 +57,6 @@ android {
             includeAndroidResources = true
         }
     }
-
-    publishing {
-        singleVariant('release') {
-            withSourcesJar()
-            withJavadocJar()
-        }
-    }
 }
 
 dependencies {
@@ -89,48 +85,6 @@ dependencies {
     compileOnly 'com.google.code.findbugs:annotations:3.0.1'
 }
 
-project.afterEvaluate {
-    publishing {
-        repositories {
-        }
-
-        publications {
-            release(MavenPublication) {
-                from components.release
-
-                groupId = 'com.hcaptcha'
-                artifactId = 'sdk'
-                version = android.defaultConfig.versionName
-
-                pom {
-                    name = 'Android SDK hCaptcha'
-                    description = 'This SDK provides a wrapper for hCaptcha and is a drop-in replacement for the SafetyNet reCAPTCHA API.'
-                    url = 'https://github.com/hCaptcha/hcaptcha-android-sdk'
-                    licenses {
-                        license {
-                            name = 'MIT License'
-                            url = 'https://github.com/hCaptcha/hcaptcha-android-sdk/blob/main/LICENSE'
-                        }
-                    }
-                    developers {
-                        developer {
-                            id = 'sergiu'
-                            name = 'Sergiu Danalachi'
-                            email = 'sergiu@intuitionmachines.com'
-                            organization = 'hCaptcha'
-                            organizationUrl = 'https://www.hcaptcha.com'
-                        }
-                    }
-                    scm {
-                        connection = 'scm:git:git://github.com/hCaptcha/hcaptcha-android-sdk.git'
-                        developerConnection = 'scm:git:ssh://github.com:hCaptcha/hcaptcha-android-sdk.git'
-                        url = 'https://github.com/hCaptcha/hcaptcha-android-sdk'
-                    }
-                }
-            }
-        }
-    }
-}
 
 long MAX_AAR_SIZE_KB = 200
 
