@@ -4,7 +4,7 @@ ext {
     mGroupId = "com.ozanlimited"
     mArtifactId = "hcaptcha"
     mVersionCode = 1
-    mVersionName = "1.0.0"
+    mVersionName = "1.0.2"
 
     mLibraryName = "Hcaptcha"
     mLibraryDescription = ""
